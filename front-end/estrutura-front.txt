@@ -1,0 +1,39 @@
+frontend/
+│
+├─ assets/
+│  ├─ css/
+│  │  ├─ style.css
+│  │  ├─ pages/
+│  │  │  ├─ login.css
+│  │  │  ├─ painel-admin.css
+│  │  │  ├─ agenda-aluno.css
+│  │  │  └─ experimental.css
+│  │  └─ components/
+│  │     ├─ navbar.css
+│  │     ├─ cards.css
+│  │     └─ forms.css
+│  │
+│  ├─ js/
+│  │  ├─ main.js
+│  │  ├─ auth.js
+│  │  ├─ api.js
+│  │  └─ pages/
+│  │     ├─ login.js
+│  │     ├─ painel-admin.js
+│  │     ├─ agenda-aluno.js
+│  │     └─ experimental.js
+│  │
+│  └─ img/
+│     ├─ logo.png
+│     ├─ banner-login.jpg
+│     └─ placeholders/
+│
+├─ components/
+│  ├─ navbar.html
+│  ├─ sidebar.html
+│  └─ footer.html
+│
+├─ login.html
+├─ painel-admin.html
+├─ agenda-aluno.html
+└─ experimental.html
