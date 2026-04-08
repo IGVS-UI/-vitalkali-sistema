@@ -1,0 +1,260 @@
+/* login.css */
+/* Estilos exclusivos da tela de login.
+   As variáveis de cor ficam aqui — se precisar ajustar para
+   bater exatamente com o site, é só trocar os valores das variáveis. */
+
+/* ─── Variáveis de identidade visual ─────────────────────────── */
+:root {
+  /* Troque esses valores para bater com as cores exatas do vitalkali.com.br */
+  --cor-primaria:       #2d6a4f;   /* verde escuro — botões e destaques      */
+  --cor-primaria-hover: #1b4332;   /* verde mais escuro ao passar o mouse     */
+  --cor-secundaria:     #74c69d;   /* verde claro — acentos e ícones          */
+  --cor-fundo:          #f8f6f0;   /* bege clarinho — fundo da página         */
+  --cor-card:           #ffffff;   /* branco — fundo do card de login         */
+  --cor-texto:          #2d3436;   /* cinza escuro — texto principal          */
+  --cor-texto-suave:    #636e72;   /* cinza médio — labels e textos menores   */
+  --cor-borda:          #dfe6e9;   /* cinza claro — bordas dos inputs         */
+  --cor-erro:           #d63031;   /* vermelho — mensagens de erro            */
+  --sombra-card:        0 4px 24px rgba(45, 106, 79, 0.10);
+}
+
+/* ─── Reset e base ────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Layout principal — dois painéis lado a lado ─────────────── */
+.login-wrapper {
+  flex: 1;
+  display: grid;
+  /* Em telas grandes: imagem à esquerda, formulário à direita */
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* ─── Painel esquerdo — imagem e marca ────────────────────────── */
+.login-visual {
+  background-color: var(--cor-primaria);
+  background-image: url('https://www.vitalkali.com.br/img/fotolocalpilates2.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+}
+
+/* Camada escura sobre a foto para o texto ficar legível */
+.login-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 67, 50, 0.65);
+}
+
+.login-visual-content {
+  position: relative; /* fica acima da camada escura */
+  text-align: center;
+  color: #fff;
+}
+
+.login-visual-content img {
+  width: 180px;
+  margin-bottom: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-visual-content h2 {
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.login-visual-content p {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+/* ─── Painel direito — formulário ─────────────────────────────── */
+.login-form-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--cor-card);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-card h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 0.4rem;
+}
+
+.login-card .subtitulo {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* ─── Campos do formulário ────────────────────────────────────── */
+.campo-grupo {
+  margin-bottom: 1.2rem;
+}
+
+.campo-grupo label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  margin-bottom: 0.4rem;
+}
+
+.campo-grupo input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--cor-texto);
+  background: #fff;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.campo-grupo input:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+}
+
+/* Wrapper do campo senha com o botão de mostrar/ocultar */
+.senha-wrapper {
+  position: relative;
+}
+
+.senha-wrapper input {
+  padding-right: 3rem;
+}
+
+#toggle-senha {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--cor-texto-suave);
+  padding: 0;
+  line-height: 1;
+}
+
+/* ─── Link de esqueci a senha ─────────────────────────────────── */
+.link-senha {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--cor-primaria);
+  text-decoration: none;
+  margin-top: -0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.link-senha:hover {
+  text-decoration: underline;
+}
+
+/* ─── Mensagem de erro ────────────────────────────────────────── */
+.mensagem-erro {
+  background: #fff5f5;
+  border: 1px solid var(--cor-erro);
+  color: var(--cor-erro);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ─── Botão principal ─────────────────────────────────────────── */
+.btn-primario {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: var(--cor-primaria-hover);
+}
+
+.btn-primario:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primario:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ─── Link de voltar ao site ──────────────────────────────────── */
+.link-voltar {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+}
+
+.link-voltar:hover {
+  color: var(--cor-primaria);
+}
+
+/* ─── Responsividade — celular ────────────────────────────────── */
+/* Em telas pequenas, o painel de imagem some e o form ocupa tudo */
+@media (max-width: 768px) {
+  .login-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    display: none;
+  }
+
+  .login-form-area {
+    padding: 2rem 1.25rem;
+    align-items: flex-start;
+    padding-top: 3rem;
+  }
+}

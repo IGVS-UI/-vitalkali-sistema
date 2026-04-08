@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Aluno — Vital Kali</title>
+
+  <!--
+    Bootstrap: cuida do grid responsivo e classes utilitárias (d-none, etc).
+    Carregamos do CDN para não precisar instalar nada por enquanto.
+  -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+
+  <!-- Nosso CSS específico da tela de login -->
+  <link rel="stylesheet" href="../css/pages/login.css">
+</head>
+
+<body>
+
+  <!--
+    ESTRUTURA GERAL:
+    A tela é dividida em dois painéis lado a lado (via CSS Grid).
+    Esquerda: foto do estúdio + logo — transmite a identidade visual.
+    Direita: formulário de login — onde o usuário interage.
+  -->
+  <div class="login-wrapper">
+
+    <!-- ── Painel esquerdo: visual ─────────────────────────── -->
+    <div class="login-visual">
+      <div class="login-visual-content">
+        <img
+          src="https://www.vitalkali.com.br/img/d5997227-cf04-447c-ae5d-3111d809608d.png"
+          alt="Logo Vital Kali"
+        >
+        <h2>Área do Aluno</h2>
+        <p>
+          Gerencie sua agenda,<br>
+          remarque aulas e acompanhe<br>
+          sua jornada no estúdio.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Painel direito: formulário ─────────────────────── -->
+    <div class="login-form-area">
+      <div class="login-card">
+
+        <h1>Bem-vindo(a)!</h1>
+        <p class="subtitulo">Entre com seu e-mail e senha para acessar.</p>
+
+        <!--
+          FORMULÁRIO DE LOGIN
+          O id="form-login" é o que o login.js usa para encontrar e
+          interceptar o envio antes de chegar ao servidor.
+        -->
+        <form id="form-login" novalidate>
+
+          <!-- Campo e-mail -->
+          <div class="campo-grupo">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="seuemail@exemplo.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <!-- Campo senha com botão de mostrar/ocultar -->
+          <div class="campo-grupo">
+            <label for="senha">Senha</label>
+            <div class="senha-wrapper">
+              <input
+                type="password"
+                id="senha"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+              >
+              <!--
+                O botão toggle não é do tipo "submit", então não envia o form.
+                O login.js escuta o clique e alterna o type do input entre
+                "password" (oculta) e "text" (mostra).
+              -->
+              <button type="button" id="toggle-senha" aria-label="Mostrar senha">👁</button>
+            </div>
+          </div>
+
+          <!-- Link de recuperação de senha -->
+          <a href="#" class="link-senha">Esqueci minha senha</a>
+
+          <!--
+            Mensagem de erro: começa oculta (d-none = display:none do Bootstrap).
+            O login.js remove o d-none quando há erro para mostrar a mensagem.
+          -->
+          <div id="mensagem-erro" class="mensagem-erro d-none" role="alert"></div>
+
+          <!-- Botão de envio -->
+          <button type="submit" id="btn-entrar" class="btn-primario">
+            Entrar
+          </button>
+
+        </form>
+
+        <!-- Link para voltar ao site principal -->
+        <a href="https://vitalkali.com.br" class="link-voltar">
+          ← Voltar ao site do estúdio
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+    ORDEM DOS SCRIPTS — isso é importante!
+    O navegador executa os scripts na ordem em que aparecem.
+    config.js deve vir primeiro porque auth.js e api.js usam CONFIG.
+    auth.js deve vir antes de login.js porque login.js usa Auth.
+    api.js deve vir antes de login.js porque login.js usa Api.
+  -->
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/pages/login.js"></script>
+
+</body>
+</html>
