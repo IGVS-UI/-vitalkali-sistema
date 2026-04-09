@@ -1,0 +1,440 @@
+/* cadastro.css */
+
+/* ─── Variáveis — mesmas do login.css para consistência ──────── */
+:root {
+  --cor-primaria:       #2d6a4f;
+  --cor-primaria-hover: #1b4332;
+  --cor-secundaria:     #74c69d;
+  --cor-fundo:          #f8f6f0;
+  --cor-card:           #ffffff;
+  --cor-texto:          #2d3436;
+  --cor-texto-suave:    #636e72;
+  --cor-borda:          #dfe6e9;
+  --cor-erro:           #d63031;
+  --cor-sucesso:        #00b894;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
+}
+
+/* ─── Layout dois painéis ─────────────────────────────────────── */
+.cadastro-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 100vh;
+}
+
+/* ─── Painel esquerdo ─────────────────────────────────────────── */
+.cadastro-visual {
+  background-color: var(--cor-primaria);
+  background-image: url('https://www.vitalkali.com.br/img/fotolocalpilates2.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.cadastro-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 67, 50, 0.68);
+}
+
+.cadastro-visual-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.cadastro-visual-content img {
+  width: 150px;
+  margin-bottom: 1.5rem;
+  filter: brightness(0) invert(1);
+}
+
+.cadastro-visual-content h2 {
+  font-size: 1.35rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.cadastro-visual-content p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Cards de modalidade no painel esquerdo */
+.mod-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.mod-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.mod-card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.mod-card-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 3px;
+}
+
+.link-voltar-site {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-voltar-site:hover {
+  color: #fff;
+}
+
+/* ─── Painel direito ──────────────────────────────────────────── */
+.cadastro-form-area {
+  background: var(--cor-card);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem 2rem;
+  overflow-y: auto;
+}
+
+.cadastro-card {
+  width: 100%;
+  max-width: 480px;
+}
+
+.cadastro-card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 0.3rem;
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Indicador de etapas ─────────────────────────────────────── */
+.etapas {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  gap: 0;
+}
+
+.etapa-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.etapa-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f0f0f0;
+  color: #aaa;
+  border: 1px solid #ddd;
+  transition: all 0.2s;
+}
+
+.etapa-num.ativa {
+  background: var(--cor-primaria);
+  color: #fff;
+  border-color: var(--cor-primaria);
+}
+
+.etapa-num.concluida {
+  background: var(--cor-secundaria);
+  color: #fff;
+  border-color: var(--cor-secundaria);
+}
+
+.etapa-label {
+  font-size: 10px;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.etapa-linha {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+  margin-bottom: 14px;
+  margin-left: 4px;
+  margin-right: 4px;
+  min-width: 30px;
+}
+
+/* ─── Campos ──────────────────────────────────────────────────── */
+.campo-grupo {
+  margin-bottom: 1.1rem;
+}
+
+.campo-grupo label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  margin-bottom: 0.4rem;
+}
+
+.campo-opcional {
+  font-weight: 400;
+  color: var(--cor-borda);
+  font-size: 0.8rem;
+  margin-left: 4px;
+}
+
+.campo-grupo input,
+.campo-grupo select,
+.campo-grupo textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--cor-texto);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.campo-grupo input:focus,
+.campo-grupo select:focus,
+.campo-grupo textarea:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.campo-grupo textarea {
+  resize: none;
+  height: 85px;
+}
+
+.campo-hint {
+  display: block;
+  font-size: 11px;
+  color: #b2bec3;
+  margin-top: 4px;
+}
+
+/* ─── Grid dois campos lado a lado ───────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ─── Botões de seleção de modalidade ────────────────────────── */
+/*
+  Dois botões lado a lado (Pilates e Yoga).
+  O JS alterna a classe .ativa para indicar qual está selecionado.
+  O valor é lido via data-modalidade.
+*/
+.modalidade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.modalidade-btn {
+  padding: 14px 10px;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.modalidade-btn:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+}
+
+.modalidade-btn.ativa {
+  border-color: var(--cor-primaria);
+  background: #f0f9f4;
+  color: var(--cor-primaria);
+}
+
+/* ─── Mensagem de erro ────────────────────────────────────────── */
+.mensagem-erro {
+  background: #fff5f5;
+  border: 1px solid var(--cor-erro);
+  color: var(--cor-erro);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* ─── Botão principal ─────────────────────────────────────────── */
+.btn-primario {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-align: center;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: var(--cor-primaria-hover);
+}
+
+.btn-primario:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primario:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ─── Divisor e link de login ─────────────────────────────────── */
+.divisor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.1rem 0;
+  color: #b2bec3;
+  font-size: 12px;
+}
+
+.divisor::before,
+.divisor::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+.link-login {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+.link-login a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-login a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Tela de sucesso ─────────────────────────────────────────── */
+.tela-sucesso {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.sucesso-icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e8f5e9;
+  color: var(--cor-sucesso);
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  border: 2px solid #a5d6a7;
+}
+
+.sucesso-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 0.75rem;
+}
+
+.sucesso-desc {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* ─── Responsividade ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cadastro-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .cadastro-visual {
+    display: none;
+  }
+
+  .cadastro-form-area {
+    padding: 2rem 1.25rem;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
