@@ -241,6 +241,23 @@ body {
   color: var(--cor-primaria);
 }
 
+.link-cadastro {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+  margin-top: 20px;
+}
+
+.link-cadastro a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-cadastro a:hover {
+  text-decoration: underline;
+}
+
 /* ─── Responsividade — celular ────────────────────────────────── */
 /* Em telas pequenas, o painel de imagem some e o form ocupa tudo */
 @media (max-width: 768px) {
