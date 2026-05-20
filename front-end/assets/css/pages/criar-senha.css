@@ -1,0 +1,402 @@
+/* criar-senha.css */
+
+/* ─── Variáveis — mesmas do login.css ────────────────────────── */
+:root {
+  --cor-primaria:       #2d6a4f;
+  --cor-primaria-hover: #1b4332;
+  --cor-secundaria:     #74c69d;
+  --cor-fundo:          #f8f6f0;
+  --cor-card:           #ffffff;
+  --cor-texto:          #2d3436;
+  --cor-texto-suave:    #636e72;
+  --cor-borda:          #dfe6e9;
+  --cor-erro:           #d63031;
+  --cor-sucesso:        #00b894;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
+}
+
+/* ─── Layout dois painéis ─────────────────────────────────────── */
+.criar-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 100vh;
+}
+
+/* ─── Painel esquerdo ─────────────────────────────────────────── */
+.criar-visual {
+  background-color: var(--cor-primaria);
+  background-image: url('https://www.vitalkali.com.br/img/fotolocalpilates2.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.criar-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 67, 50, 0.68);
+}
+
+.criar-visual-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.criar-visual-content img {
+  width: 150px;
+  margin-bottom: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.criar-visual-content h2 {
+  font-size: 1.35rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.criar-visual-content p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.info-card-titulo {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.info-card-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.link-voltar-site {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-voltar-site:hover { color: #fff; }
+
+/* ─── Painel direito ──────────────────────────────────────────── */
+.criar-form-area {
+  background: var(--cor-card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  overflow-y: auto;
+}
+
+.criar-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.criar-card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 0.3rem;
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ─── Boas-vindas personalizado ───────────────────────────────── */
+.boas-vindas {
+  background: #f0f9f4;
+  border: 1px solid var(--cor-secundaria);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: var(--cor-primaria);
+  margin-bottom: 1.2rem;
+}
+
+/* ─── Campos ──────────────────────────────────────────────────── */
+.campo-grupo {
+  margin-bottom: 1.1rem;
+}
+
+.campo-grupo label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  margin-bottom: 0.4rem;
+}
+
+.senha-wrapper {
+  position: relative;
+}
+
+.senha-wrapper input {
+  width: 100%;
+  padding: 0.7rem 3rem 0.7rem 0.9rem;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--cor-texto);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.senha-wrapper input:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.toggle-senha {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-senha svg {
+  width: 20px;
+  height: 20px;
+}
+
+.toggle-senha:hover { color: var(--cor-primaria); }
+
+/* ─── Barra de força da senha ─────────────────────────────────── */
+/*
+  Composta por 4 segmentos coloridos.
+  O JS adiciona classes de cor conforme a senha fica mais forte.
+  Fraca: 1 segmento vermelho
+  Média: 2 segmentos amarelos
+  Boa:   3 segmentos verdes
+  Forte: 4 segmentos verdes escuros
+*/
+.forca-senha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.forca-barra {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.forca-segmento {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--cor-borda);
+  transition: background 0.3s;
+}
+
+.forca-segmento.fraca  { background: #e74c3c; }
+.forca-segmento.media  { background: #f39c12; }
+.forca-segmento.boa    { background: #27ae60; }
+.forca-segmento.forte  { background: #1b4332; }
+
+.forca-label {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+/* ─── Lista de requisitos ─────────────────────────────────────── */
+/*
+  Cada <li> começa cinza.
+  O JS adiciona .ok quando o requisito é atendido.
+*/
+.requisitos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 1.1rem;
+  padding: 0;
+}
+
+.requisitos li {
+  font-size: 12px;
+  color: #b2bec3;
+  padding-left: 18px;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.requisitos li::before {
+  content: '○';
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  transition: color 0.2s;
+}
+
+.requisitos li.ok {
+  color: var(--cor-primaria);
+}
+
+.requisitos li.ok::before {
+  content: '●';
+  color: var(--cor-secundaria);
+}
+
+/* ─── Mensagem de erro ────────────────────────────────────────── */
+.mensagem-erro {
+  background: #fff5f5;
+  border: 1px solid var(--cor-erro);
+  color: var(--cor-erro);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* ─── Botão principal ─────────────────────────────────────────── */
+.btn-primario {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primario:hover:not(:disabled) { background: var(--cor-primaria-hover); }
+.btn-primario:active:not(:disabled) { transform: scale(0.98); }
+.btn-primario:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* ─── Estados alternativos (erro de token / sucesso) ──────────── */
+.estado-icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.estado-icone.sucesso {
+  background: #e8f5e9;
+  color: var(--cor-sucesso);
+  border: 2px solid #a5d6a7;
+}
+
+.estado-icone.erro {
+  background: #fff5f5;
+  color: var(--cor-erro);
+  border: 2px solid #ffcdd2;
+}
+
+.sucesso-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.sucesso-desc {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ─── Animação de carregando (três pontinhos) ─────────────────── */
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1.5rem;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cor-secundaria);
+  animation: pulsar 1.2s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulsar {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
+  40%           { transform: scale(1);   opacity: 1;   }
+}
+
+/* ─── Responsividade ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .criar-wrapper { grid-template-columns: 1fr; }
+  .criar-visual  { display: none; }
+  .criar-form-area {
+    padding: 2rem 1.25rem;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+  }
+}
